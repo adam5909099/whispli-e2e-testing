@@ -1,3 +1,7 @@
 {
-  "baseUrl": "https://dv-bld-tax-01/ui-dev"
+  "baseUrl": "https://staff-renata.whispli.com",
+  "chromeWebSecurity": false,
+  "defaultCommandTimeout": 30000,
+  "viewportWidth": 1366,
+  "viewportHeight": 768
 }
