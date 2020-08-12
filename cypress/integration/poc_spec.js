@@ -92,5 +92,5 @@ it('Proof of Concept', () => {
 
   // Submit the report
   cy.contains('.v-btn', 'Submit Report').click();
-  cy.contains('.v-dialog', /Your report has been sent .*/);
+  cy.contains('.v-dialog', /Your report has been sent .*/).should('exist');
 });
