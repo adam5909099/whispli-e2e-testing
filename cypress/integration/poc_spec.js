@@ -18,14 +18,19 @@ it('Proof of Concept', () => {
 
   // Select the 'Qa Question' Report type
   cy.get('@report-dialog').find('input[name=channel]').first().click();
-  cy.contains('.v-list-item', 'Qa Questions').click();
+  cy.get('.v-menu__content').contains('.v-list-item', 'Qa Questions').click();
 
-  cy.contains('button[type=submit]', 'Compose Report')
-    .should('not.have.class', 'v-btn--disabled')
-    .click();
+  cy.contains('button[type=submit]', 'Compose Report').should(
+    'not.have.class',
+    'v-btn--disabled'
+  );
+  cy.contains('button[type=submit]', 'Compose Report').click();
 
   // Complete the report, filling in all answers
-  cy.contains('.report-form__step__element', 'Country?').find('input').click();
+  cy.contains('.report-form__step__element', 'Country?')
+    .find('input')
+    .first()
+    .click();
   cy.contains('.v-list-item', 'Albania').click();
 
   cy.contains('.report-form__step__element', 'How this happened?')
@@ -44,13 +49,20 @@ it('Proof of Concept', () => {
 
   cy.contains('.report-form__step__element', 'Inform number')
     .find('input')
-    .type('Test number');
+    .first()
+    .type('123');
 
-  cy.contains('.report-form__step__element', 'Date?').find('input').click();
-  cy.get('.v-date-picker-table').contains('.v-btn', '12');
-  cy.get('.v-date-picker-table').contains('.v-btn', 'Ok');
+  cy.contains('.report-form__step__element', 'Date?')
+    .find('input')
+    .first()
+    .click();
+  cy.get('.v-picker').contains('.v-btn', '12').click();
+  cy.get('.v-picker').contains('.v-btn', 'Ok').click();
 
-  cy.contains('.report-form__step__element', 'Who?').find('input').click();
+  cy.contains('.report-form__step__element', 'Who?')
+    .find('input')
+    .first()
+    .click();
   cy.contains('.v-list-item', 'Qa Test').click();
 
   cy.contains('.v-btn', 'Save Progress and Continue').click();
@@ -63,7 +75,7 @@ it('Proof of Concept', () => {
     '.report-form__step__element',
     'Multiple Choice Single Selection Dropdown'
   )
-    .find('v-input__slot')
+    .find('.v-select__slot')
     .click();
   cy.contains('.v-list-item__title', 'Option II').click();
 
@@ -71,7 +83,7 @@ it('Proof of Concept', () => {
     '.report-form__step__element',
     'Multiple Choice Checkbox Dropdown'
   )
-    .find('v-input__slot')
+    .find('.v-select__slot')
     .click();
   cy.contains('.v-list-item__title', 'Option One').click();
   cy.contains('.v-list-item__title', 'Option Two').click();
